@@ -21,6 +21,15 @@ public class CreditCard {
         return this.credit;
     }
 
+    public boolean pay(double pago) {
+        if (pago <= credit) {
+            credit = credit - pago;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
     @Override
     public String toString() {
