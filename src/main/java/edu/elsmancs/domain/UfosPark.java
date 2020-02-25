@@ -17,6 +17,30 @@ public class UfosPark {
             flota.put(ovni, null);
         }
 
+    public void dispatch(CreditCard owner) {
+        //mirar si hay disponibles, si hay coger el primero y reservarlo, intentar pagar.
+        for (String ovni : flota.keySet()) {
+            if (flota.get(ovni) == null) {
+                if (owner.pay(fee)) {
+                    flota.put(ovni, owner.number());
+                }
+            }
+            if (flota.get(ovni) == owner.number()) {
+                break;
+            }
+        }
+    }
+
+    public String getUfoOf(String number) {
+        String nameOvni = null;
+        for (String ovni : flota.keySet()) {
+            if (flota.get(ovni) == number) {
+                nameOvni = ovni;
+            }
+        }
+        return nameOvni;
+    }
+
     @Override
     public String toString() {
         List<String> ListKeys = new ArrayList<String>(flota.keySet());
