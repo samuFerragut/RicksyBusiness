@@ -1,6 +1,6 @@
 package edu.elsmancs.domain;
 
-public class CrystalExpender {
+public class CrystalExpender implements GuestDispatcher {
     private int stock = 0;
     private double itemCost = 50;
 
@@ -10,6 +10,7 @@ public class CrystalExpender {
     }
 
 
+    @Override
     public void dispatch(CreditCard owner) {
         if (owner.pay(itemCost) && stock > 0) {
             this.stock -= 1;
@@ -19,6 +20,7 @@ public class CrystalExpender {
     public int stock() {
         return stock;
     }
+
 
     @Override
     public String toString() {
