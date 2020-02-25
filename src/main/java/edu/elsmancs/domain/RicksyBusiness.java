@@ -8,7 +8,7 @@
  * Abradolph Lincler (una combinación de DNA
  * de Adolf Hitler y Abraham Lincoln).
  *
- * Cuando un invitado/a llega a la fiesta, 
+ * Cuando un invitado/a llega a la fiesta,
  * se le da de alta en el receptivo del sistema
  * mediante su tarjeta de crédito.
  *
@@ -19,8 +19,8 @@
  * El componente de reserva de Ovnis y el componente
  * de entrega del pack de bienvenida observan al
  * componente receptivo, de modo que cuando el receptivo
- * da de alta a un invitado/a automáticamente cargan 
- * en la tarjeta del invitado/a el coste de ambos servicios. 
+ * da de alta a un invitado/a automáticamente cargan
+ * en la tarjeta del invitado/a el coste de ambos servicios.
  */
 
 package edu.elsmancs.domain;
@@ -39,7 +39,7 @@ public class RicksyBusiness {
         CreditCard abradolph = new CreditCard("Abradolph Lincler", "4916119711304546");
 
         System.out.println("\n" + "Tarjeta de Abradolph" + "\n" +
-                "====================");
+                "===================="        );
         System.out.println(abradolph);
 
         /**
@@ -56,7 +56,7 @@ public class RicksyBusiness {
 
         // Da de alta en la flota de ovnis 2 UFOS.
 
-        String[] ufosID = {"unx", "dox"};
+        String[] ufosID = { "unx", "dox" };
         for (String ovni : ufosID) {
             ufosPark.add(ovni);
         }
@@ -165,6 +165,62 @@ public class RicksyBusiness {
          * y CrystalDispatcher al receptivo
          */
 
+        Receptivo receptivo = new Receptivo();
+        receptivo.registra(packExpender);
+        receptivo.registra(ufosPark);
+
+        // Implementa el metodo receptivo.dispatch()
+        // para que invoque a UfosPark.dispatch()
+        // y a CrystalExpender.dispatch()
+
+        // Squanchy reserva ovni (ya tiene) y pack
+
+        System.out.println("\nLLega Squanchy!\n" +
+                "===============");
+        receptivo.dispatch(squanchy);
+        mostrarReserva(squanchy, packExpender, ufosPark);
+
+        // Gearhead reserva ovni y pack.
+        // No tiene crédito.
+
+        System.out.println("\nLLega GearHead!\n" +
+                "===============");
+        gearHead.pay(3000); // no tiene crédito
+        receptivo.dispatch(gearHead);
+        mostrarReserva(gearHead, packExpender, ufosPark);
+
+        // Birdpearson es recibido en la fiesta
+
+        System.out.println("\nLLega Birdpearson!\n" +
+                "==================");
+        CreditCard birdpearson = new CreditCard("Birdpearson", "1111111111111111");
+        receptivo.dispatch(birdpearson);
+        mostrarReserva(birdpearson, packExpender, ufosPark);
+
+        // Morty intenta reserver un ovni y un pack pero no quedan
+
+        System.out.println("\nMorty quiere pack y ovni pero no quedan :(\n" +
+                "==========================================");
+        morty = new CreditCard("Morty", "0000000000000000");
+        receptivo.dispatch(morty);
+        mostrarReserva(morty, packExpender, ufosPark);
+
+
+        /**
+         * A por el 10!!
+         * Wubba lubba dub dub!!
+         *
+         * Añade otra tarea al receptivo,
+         * de modo que 5 invitados:
+         * abradolph, squanchy, morty, gearHead, birdpearson
+         * encarguen un RickMenú junto
+         * al ovni y al pack de bienvenida.
+         * Hay 100 RickMenús y su precio es de 10 EZIs.
+         * Muestra el total de pedidos y la lista de
+         * invitados/as que han hecho un pedido.
+         */
+
+        // tu código aquí
     }
 
     private static void mostrarReserva(CreditCard card, CrystalExpender expender, UfosPark ufos) {
