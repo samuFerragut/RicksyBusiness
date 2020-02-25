@@ -28,6 +28,11 @@ public class UfosParkTest {
      */
     @Test
     public void dispatchTest() {
+        UfosPark ovnis = new UfosPark();
+        CreditCard owner = new CreditCard("Abradolph Lincler", "4916119711304546");
+        ovnis.add("unx");
+        ovnis.dispatch(owner);
+        assertEquals("unx", ovnis.getUfoOf(owner.number()));
     }
 
     /**
@@ -55,12 +60,5 @@ public class UfosParkTest {
      */
     @Test
     public void dispatchNoUfoAvaliableTest() {
-    }
-
-    /**
-     * Devuelve el UFO reservado para la tarjeta.
-     */
-    @Test
-    public void getUfoOfTest() {
     }
 }
