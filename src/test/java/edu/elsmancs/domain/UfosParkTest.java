@@ -1,5 +1,6 @@
 package edu.elsmancs.domain;
 
+import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -42,6 +43,12 @@ public class UfosParkTest {
      */
     @Test
     public void dispatchNoCreditTest() {
+        UfosPark ovnis = new UfosPark();
+        CreditCard owner = new CreditCard("Abradolph Lincler", "4916119711304546");
+        ovnis.add("unx");
+        owner.pay(3000);
+        ovnis.dispatch(owner);
+        assertEquals(null, ovnis.getUfoOf(owner.number()));
     }
 
     /**
@@ -51,6 +58,15 @@ public class UfosParkTest {
      */
     @Test
     public void dispatchUfoAlreadyReservedTest() {
+        UfosPark ovnis = new UfosPark();
+        CreditCard owner = new CreditCard("Abradolph Lincler", "4916119711304546");
+        ovnis.add("unx");
+        ovnis.dispatch(owner);
+        assertEquals("unx", ovnis.getUfoOf(owner.number()));
+        ovnis.add("dox");
+        CreditCard owner2 = new CreditCard("Abradolph Lincler", "4916119711304546");
+        ovnis.dispatch(owner2);
+        assertEquals("unx", ovnis.getUfoOf(owner2.number()));
     }
 
     /**
@@ -60,5 +76,13 @@ public class UfosParkTest {
      */
     @Test
     public void dispatchNoUfoAvaliableTest() {
+        UfosPark ovnis = new UfosPark();
+        CreditCard owner = new CreditCard("Squanchy", "4444444444444444");
+        CreditCard owner2 = new CreditCard("Birdpearson", "1111111111111111");
+        ovnis.add("unx");
+        ovnis.dispatch(owner);
+        ovnis.dispatch(owner2);
+        assertEquals("unx", ovnis.getUfoOf(owner.number()));
+        assertEquals(null, ovnis.getUfoOf(owner2.number()));
     }
 }
