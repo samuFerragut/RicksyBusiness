@@ -2,5 +2,5 @@ package edu.elsmancs.domain;
 
 public interface GuestDispatcher {
 
-    public void dispatch(CreditCard owner);
+    void dispatch(CreditCard owner);
 }
