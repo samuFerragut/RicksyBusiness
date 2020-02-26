@@ -6,9 +6,6 @@ import static org.junit.Assert.*;
 
 public class UfosParkTest {
 
-    UfosPark ufos = null;
-    String[] ovnis = { "unx", "dox", "trex" };
-
     /**
      * Testea el metodo añadir ovni 
      * a la flota de ufos

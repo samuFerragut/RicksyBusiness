@@ -17,7 +17,7 @@ public class CrystalExpender implements GuestDispatcher {
         }
     }
 
-    public int stock() {
+    int stock() {
         return stock;
     }
 
