@@ -1,3 +1,11 @@
+# Kata examen RicksyBusiness
+
+## Hecho por Samu Ferragut
+
+### Clase RicksyBusiness.java proporcionada por dfleta
+
+
+
 Ricksy Business
 ===============
 
